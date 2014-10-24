@@ -1,0 +1,4 @@
+#http://railsapps.github.io/rails-environment-variables.html
+
+BASIC_AUTH_USERNAME:
+BASIC_AUTH_PASSWORD:

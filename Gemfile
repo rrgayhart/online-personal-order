@@ -7,22 +7,18 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'bootstrap-sass', '>= 3.0.0.0'
 gem 'pg'
+gem 'bootstrap-sass', '>= 3.0.0.0'
+gem 'figaro'
 
 group :development do
   gem 'better_errors'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
-  gem 'pry-debugger'
-end
-
-group :test do
-  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :doc do

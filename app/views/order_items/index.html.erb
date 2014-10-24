@@ -1,0 +1,63 @@
+<% @order_items.each do %>
+
+<% end %>
+
+
+<div id="order-items-list">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Due
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <% @order_items.each do |item| %>
+                <h5><%= item.name %></h5>
+            <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                Upcoming
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <% @order_items.each do |item| %>
+                <h5><%= item.name %></h5>
+            <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                All
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+              <% @order_items.each do |item| %>
+                <h5><%= item.name %></h5>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
