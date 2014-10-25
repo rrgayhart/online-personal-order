@@ -1,7 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe OrderItem, :type => :model do
-  it 'should exist' do
-    expect(create(:order_item)).to eq('boo')
+describe OrderItem do
+  describe '.postpone' do
+    new_order_item = FactoryGirl.create(:order_item)
+    new_order_item.postpone
+    expect(new_order_item.frequency).to eq(1)
   end
 end
