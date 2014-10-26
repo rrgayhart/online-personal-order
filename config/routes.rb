@@ -7,6 +7,10 @@ OnlinePersonalOrder::Application.routes.draw do
 
    resources :order_items
 
+   get 'postpone/:id' => 'order_items#postpone'
+   get 'set-due/:id' => 'order_items#set_due'
+   get 'purchase/:id' => 'order_items#purchase'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -8,6 +8,11 @@ class OrderItem < ActiveRecord::Base
     self.save
   end
 
+  def purchase
+    self.last_purchase = Date.today
+    self.save
+  end
+
   def set_due
     difference = self.frequency - months_since_purchase
     if difference > 0

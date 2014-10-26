@@ -1,94 +1,71 @@
 <div id="order-items-list">
   <div class="row">
     <div class="col-md-12">
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                Due
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse">
-            <div class="panel-body">
-              <ul>
-                <% @due_order_items.each do |item| %>
-                  <li>
-                    <em><%= item.name %></em>
-                    <%= item.frequency %>
-                    <%= item.frequency_type %>
-                    <%= item.last_purchase %>
-                    Buy in <%= item.months_till_purchase %> Months
-                    <% if item.locations %>
-                      <% item.locations.each do |location| %>
-                        <%= location.name %>
-                      <% end %>
-                    <% end %>
-                  </li>
-              <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
+      Due
+      <ul>
+        <% @due_order_items.each do |item| %>
+          <%= content_tag_for(:li, item) do %>
+        <button class="purchase btn btn-xs btn-success">Purchase</button>
+          <b><%= item.name %></b>
+        <%= item.frequency %>
+        <%= item.frequency_type %>
+        <%= item.last_purchase %>
+        Buy in <%= item.months_till_purchase %> Months
+        <% if item.locations %>
+          <% item.locations.each do |location| %>
+          <%= location.name %>
+      <% end %>
+      <% end %>
+        <button class="postpone btn btn-xs btn-info">Postpone</button>
+      <% end %>
+      <% end %>
+    </ul>
+    Upcoming
+    <ul>
+      <% @due_soon_order_items.each do |item| %>
+        <%= content_tag_for(:li, item) do %>
+        <button class="set-due btn btn-xs btn-warning">Set Due</button>
+      <em><%= item.name %></em>
+      <%= item.frequency %>
+      <%= item.frequency_type %>
+      <%= item.last_purchase %>
+      Buy in <%= item.months_till_purchase %> Months
+      <% if item.locations %>
+        <% item.locations.each do |location| %>
+        <%= location.name %>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+    </ul>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                Upcoming
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-              <ul>
-                <% @due_soon_order_items.each do |item| %>
-                  <li>
-                    <em><%= item.name %></em>
-                    <%= item.frequency %>
-                    <%= item.frequency_type %>
-                    <%= item.last_purchase %>
-                    Buy in <%= item.months_till_purchase %> Months
-                    <% if item.locations %>
-                      <% item.locations.each do |location| %>
-                        <%= location.name %>
-                      <% end %>
-                    <% end %>
-                  </li>
-              <% end %>
-              </ul>
-            </div>
-          </div>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              All
+            </a>
+          </h4>
         </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                All
-              </a>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">
-              <ul>
-                <% @order_items.each do |item| %>
-                  <li>
-                    <em><%= item.name %></em>
-                    <%= item.frequency %>
-                    <%= item.frequency_type %>
-                    <%= item.last_purchase %>
-                    Buy in <%= item.months_till_purchase %> Months
-                    <% if item.locations %>
-                      <% item.locations.each do |location| %>
-                        <%= location.name %>
-                      <% end %>
-                    <% end %>
-                  </li>
-              <% end %>
-              </ul>
-            </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul>
+              <% @order_items.each do |item| %>
+                <li>
+              <em><%= item.name %></em>
+              <%= item.frequency %>
+              <%= item.frequency_type %>
+              <%= item.last_purchase %>
+              Buy in <%= item.months_till_purchase %> Months
+              <% if item.locations %>
+                <% item.locations.each do |location| %>
+                <%= location.name %>
+            <% end %>
+            <% end %>
+              </li>
+            <% end %>
+            </ul>
           </div>
         </div>
       </div>
