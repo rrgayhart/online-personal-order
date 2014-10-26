@@ -1,4 +1,5 @@
 class OrderItem < ActiveRecord::Base
+  validates :last_purchase, presence: true
   validates_uniqueness_of :name, :case_sensitive => false
   has_many :order_item_locations
   has_many :locations, through: :order_item_locations

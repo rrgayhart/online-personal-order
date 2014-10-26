@@ -1,9 +1,9 @@
 <p>
-  <b>Last purchased</b> <%= time_ago_in_words(h item.last_purchase) %> ago
-  <b>Frequency of purchase: </b>Every <%= h item.frequency %> <%= h item.frequency_type %>(s)
-  <% if h item.locations %>
-    <% h item.locations.each do |location| %>
-      <b>Buy at: </b><%= location.name %>
-    <% end %>
+  <b>Last purchased</b> <%= time_ago_in_words(item.last_purchase) %> ago
+  <b>Frequency of purchase: </b>Every <%= item.frequency %> <%= item.frequency_type %>(s)
+  <% if item.locations.any? %>
+    <% item.locations.each do |location| %>
+      <p><b>Buy at: </b><%= location.name %></p>
   <% end %>
+<% end %>
 </p>

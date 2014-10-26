@@ -1,7 +1,7 @@
 <div id="order-items-list">
   <div class="row">
     <div class="col-md-12">
-
+      <%= button_to "Add New", new_order_item_path, :class => "btn btn-lg", :method => :get %>
       <h3>Due</h3>
       <ul>
         <% @due_order_items.each do |item| %>
