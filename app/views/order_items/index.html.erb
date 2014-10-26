@@ -52,8 +52,9 @@
           <div class="panel-body">
             <ul>
               <% @order_items.each do |item| %>
-                <li>
-              <em><%= item.name %></em>
+                <%= content_tag_for(:li, item) do %>
+                  <button class="set-due btn btn-xs btn-warning">Set Due</button>
+                <em><%= item.name %></em>
               <%= item.frequency %>
               <%= item.frequency_type %>
               <%= item.last_purchase %>
@@ -63,7 +64,7 @@
                 <%= location.name %>
             <% end %>
             <% end %>
-              </li>
+            <% end %>
             <% end %>
             </ul>
           </div>
