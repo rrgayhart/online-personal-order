@@ -4,23 +4,23 @@ class OrderItem < ActiveRecord::Base
   has_many :order_item_locations
   has_many :locations, through: :order_item_locations
 
-  def postpone
-    self.frequency += 1
-    self.save
-  end
-
   def purchase
     self.last_purchase = Date.today
     self.save
   end
 
   def set_due
-    difference = self.frequency - months_since_purchase
-    if difference > 0
-      self.frequency = difference
+    if !due? && months_since_purchase != 0
+      update_attributes(frequency: months_since_purchase)
+    end
+  end
+
+  def postpone
+    if due?
+      months = months_since_purchase
+      self.frequency = months += 1
     else
-      self.frequency = 1
-      self.last_purchase = Date.today.last_month
+      self.frequency += 1
     end
     self.save
   end
