@@ -21,12 +21,20 @@ class OrderItemsController < ApplicationController
     redirect_to :root
   end
 
+  def edit
+    @item = OrderItem.find(params[:id])
+  end
+
   def update
+    @order_item = OrderItem.find(params[:id])
     if @order_item.update(order_item_params)
+      if location_params['location_id'].present?
+        order_item_location_params = location_params.merge({order_item_id: @order_item.id})
+        OrderItemLocation.create(order_item_location_params)
+      end
       flash[:notice] = "Order Item Updated"
-    else
-      redirect_to :root
     end
+      redirect_to :root
   end
 
   def purchase

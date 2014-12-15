@@ -7,8 +7,9 @@
         <% @due_order_items.each do |item| %>
           <%= content_tag_for(:li, item) do %>
           <b><%= item.name %></b>
-        <button class="purchase btn btn-xs btn-success">Purchase</button>
-        <button class="postpone btn btn-xs btn-info">Postpone</button>
+        <button class="purchase btn btn-xs btn-success">Purchase</button> -
+        <button class="postpone btn btn-xs btn-info">Postpone</button> -
+        <%= link_to "Edit", edit_order_item_path(item), :class => "btn btn-default btn-xs"%></td>
         <%= render partial: 'order_item_details', :locals => {:item => item} %>
       <% end %>
       <% end %>
@@ -22,6 +23,7 @@
         <button class="set-due btn btn-xs btn-warning">Set Due</button>
         <button class="postpone btn btn-xs btn-info">Postpone</button>
         <button class="purchase btn btn-xs btn-success">Purchase</button>
+        <%= link_to "Edit", edit_order_item_path(item), :class => "btn btn-default btn-xs"%></td>
         <%= render partial: 'order_item_details', :locals => {:item => item} %>
       <% end %>
       <% end %>
@@ -45,7 +47,8 @@
                 <button class="set-due btn btn-xs btn-warning">Set Due</button>
                 <button class="postpone btn btn-xs btn-info">Postpone</button>
                 <button class="purchase btn btn-xs btn-success">Purchase</button>
-                <%= render partial: 'order_item_details', :locals => {:item => item} %>
+                <%= link_to "Edit", edit_order_item_path(item), :class => "btn btn-default btn-xs"%></td>
+              <%= render partial: 'order_item_details', :locals => {:item => item} %>
               <% end %>
               <% end %>
               </ul>
